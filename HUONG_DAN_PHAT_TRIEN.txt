@@ -1,0 +1,53 @@
+MNHUT PLATFORM - HƯỚNG DẪN PHÁT TRIỂN
+
+1. YÊU CẦU
+- Windows 11 hoặc hệ điều hành tương thích.
+- Python 3.11 đến 3.13. Python 3.14 có thể phải tự build pydantic-core nên chưa được khuyến nghị.
+- Node.js 20 trở lên và npm.
+- Rust, Cargo, WebView2 chỉ bắt buộc khi chạy hoặc build Tauri desktop.
+
+2. CÀI BACKEND
+cd backend
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+
+3. CÀI FRONTEND
+cd prototype_ui
+npm ci
+
+4. CHẠY DEV THỐNG NHẤT
+Từ thư mục mnhut_build:
+python run_dev.py
+
+Chỉ kiểm tra dependency và entrypoint:
+python run_dev.py --kiem-tra
+
+Chạy Tauri khi đã có Rust Cargo:
+python run_dev.py --desktop
+
+5. KIỂM THỬ
+backend\.venv\Scripts\python.exe -m pytest tests -q
+cd prototype_ui
+npm run typecheck
+npm run build
+
+6. DATABASE VÀ MIGRATION
+- SQLite mặc định: mnhut.sqlite3 tại thư mục gốc.
+- Có thể đặt biến môi trường MNHUT_DB_PATH cho môi trường test/dev.
+- Migration nằm trong migrations và được áp dụng tuần tự vào migration_log.
+- Không sửa database production bằng tay rồi bỏ qua migration.
+
+7. BOUNDARY
+- Frontend không chạy shell trực tiếp.
+- Native/file/process đi qua FastAPI hoặc Rust/Tauri command có validation.
+- Backend dev chỉ bind 127.0.0.1.
+- Không log secret; thao tác phá hủy phải có xác nhận và audit.
+
+8. BUILD DESKTOP
+cd prototype_ui
+npm run desktop:build
+
+Chỉ công bố installer/portable sau khi build thật và chạy smoke test trên Windows. Máy audit hiện không có Rust/Cargo nên Tauri build đang NOT TESTED.
+
+9. TRẠNG THÁI
+Đọc PROJECT_STATE.md, HANDOFF.md và AUDIT_P0_2026-09-12.md trước khi bắt đầu phase tiếp theo. Không viết lại source hoặc làm xấu UI hiện tại.

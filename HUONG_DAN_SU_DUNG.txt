@@ -1,0 +1,11 @@
+MNHUT PLATFORM - HƯỚNG DẪN SỬ DỤNG
+
+1. Trong giai đoạn phát triển, chạy python run_dev.py từ thư mục mnhut_build.
+2. Mở http://127.0.0.1:5173; backend FastAPI chỉ chạy trên 127.0.0.1:8000.
+3. Mở ứng dụng bằng trình duyệt trong giai đoạn phát triển. Khi Tauri được build, dùng cửa sổ desktop.
+4. Ctrl+K mở bảng lệnh toàn cục.
+5. Dự án/Nhiệm vụ/Lỗi lưu bằng API local vào SQLite.
+6. Tệp & Thư mục có thể lập chỉ mục metadata bằng đường dẫn được chỉ định.
+7. Hệ thống hiển thị metric thật khi môi trường cung cấp dữ liệu.
+8. Module chưa có backend chuyên sâu phải hiển thị trạng thái chưa có dữ liệu, không tự bịa số.
+9. Nếu thấy thông báo không kết nối dịch vụ cục bộ, kiểm tra cửa sổ chạy run_dev.py và cài lại dependency theo HUONG_DAN_PHAT_TRIEN.txt.

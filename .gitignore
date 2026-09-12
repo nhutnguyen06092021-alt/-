@@ -1,0 +1,36 @@
+# Dependency và môi trường cục bộ
+node_modules/
+.venv/
+backend/.venv/
+backend/.onefile-venv/
+backend/.tmp/
+
+# Kết quả build và cache
+dist/
+target/
+build/
+src-tauri/binaries/*.exe
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+tests/.tmp/
+onefile_test_temp/
+*.tsbuildinfo
+.npm-cache/
+test-results/
+playwright-report/
+
+# Dữ liệu người dùng và cấu hình riêng
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+.env
+.env.*
+!.env.example
+
+# IDE và hệ điều hành
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
